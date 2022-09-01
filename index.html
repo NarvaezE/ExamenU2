@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laberinto Monkey</title>
+    <style>
+        canvas {
+            
+            background-color: black;
+        }
+    </style>
+</head>
+<body> 
+    
+    <canvas id="mycanvas" width="1000" height="1000" >
+        Tu navegador no soporta canvas
+    </canvas>
+    <script type="text/javascript">
+        
+        var cv = null;
+        var ctx = null;
+        var player1 = null;
+        var player2 = null;
+        var superx=40;
+        var supery=70;
+        var direction ='left';
+        var score =0;
+        var speed =4;
+        var pause =false;
+        var walls = [4];
+        var fondo = new Image();
+        var personaje = new Image();
+        var objetivo = new Image();
+        var muros = new Image();
+        var sonido = new Audio();
+        var segundos = 0;
+        function Cuadro(x,y,w,h,c) {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.c = c;
+
+            this.se_tocan = function (target) { 
+
+                if(this.x < target.x + target.w &&
+
+                this.x + this.w > target.x && 
+
+                this.y < target.y + target.h && 
+
+                this.y + this.h > target.y)
+
+                {
+
+                return true;  
+
+                }  
+
+            };
+
+            this.dibujar=function(ctx){
+                ctx.fillStyle =this.c;
+                ctx.fillRect(this.x,this.y,this.w,this.h);
+                ctx.strokeRect(this.x,this.y,this.w,this.h)
+            }
+
+        }
+        
+        function contador(){
+            var n = 0;
+            
+            window.setInterval(function(){
+            
+            
+            n++;
+            if(n>segundos){
+                segundos=n;
+            }ddd
+            },1000);
+            
+            
+        }
+        function start(){
+             cv = document.getElementById('mycanvas');
+             ctx = cv.getContext('2d');
+
+             walls.push(new Cuadro(20,50,950,5,'black'));
+             walls.push(new Cuadro(20,950,950,5,'black'));
+             walls.push(new Cuadro(20,50,5,900,'black'));
+             walls.push(new Cuadro(970,50,5,900,'black'));
+             walls.push(new Cuadro(45,55,5,45,'black'));
+             walls.push(new Cuadro(25,135,75,5,'black'));
+             walls.push(new Cuadro(70,80,5,60,'black'));
+             walls.push(new Cuadro(95,110,5,25,'black'));
+             walls.push(new Cuadro(75,80,50,5,'black'));
+             walls.push(new Cuadro(120,85,5,130,'black'));
+             walls.push(new Cuadro(150,80,5,100,'black'));
+
+             player1 = new Cuadro(superx,supery,10,18,'red')
+             player2 = new Cuadro(950,930,10,10,'yellow')
+
+            sonido.src ='overworld-day.mp3';
+
+            personaje.src = 'guide.png';
+            objetivo.src = 'espada.png';
+            fondo.src = 'fondo.png';
+
+             paint();
+        }
+
+
+        
+
+        function paint() {
+
+            window.requestAnimationFrame(paint);
+            //ctx.fillStyle = "forestgreen";
+            ctx.drawImage(fondo, 0, 0,1000,1000)
+            //ctx.fillRect(0, 0,1000,1000);
+
+            ctx.fillStyle = "black";
+            ctx.fillText('TIEMPO: '+segundos,20,20);
+            
+            
+
+            ctx.drawImage(personaje,player1.x,player1.y);
+            ctx.drawImage(objetivo,player2.x,player2.y);
+            
+            for (var i = 0; i < walls.length; i++) {
+                ctx.fillStyle = "black";
+                ctx.fillRect(walls[i].x,walls[i].y,walls[i].w,walls[i].h);
+
+                 
+            }
+            if(pause){
+                
+                ctx.fillStyle = "black";
+                ctx.fillRect(0,0,1000,1000);
+
+                ctx.fillStyle = "white";
+                ctx.fillText('P A U S E',500,500);
+                sonido.pause();
+                
+            }else{
+                update();
+                sonido.pause();
+                contador();
+                sonido.volume=0.05
+            }
+            
+            
+        }   
+
+        document.addEventListener('keydown', function(e) {
+            console.log(e.keyCode)
+            if(e.keyCode == 87 ){
+                
+                
+                direction='up';
+            }
+            if(e.keyCode == 83 ){
+                
+                
+                direction='down';
+            }
+            if(e.keyCode == 65 ){
+                
+                
+                direction='left';
+            }
+            if(e.keyCode == 68 ){
+                
+                direction='right';
+            }
+
+            if(e.keyCode == 32 ){
+                
+                pause=(pause)?false:true;
+            } 
+            
+        });
+
+        function update() {
+            if (direction=='right'){
+                player1.x+=2;
+                // if(player1.x >1000) {
+                    
+                // player1.x = 1000;
+                // }
+            }
+            
+            if (direction=='down'){
+                player1.y+=2;
+                // if(player1.y >1000) {
+                    
+                // player1.y = 1000;
+                // }
+            }
+
+            if (direction=='left'){
+                player1.x-=2;
+                // if(player1.x <0) {
+                //     player1.x = 0;
+                // }
+            }
+
+            if (direction=='up'){
+                player1.y-=2;
+                // if(player1.y <0) {
+                //     player1.y = 1;
+                // }
+            }
+
+            
+            
+            if (player1.se_tocan(player2)){
+                player2.x = getRandomInt(500);
+				player2.y = getRandomInt(500);
+				score += 10;
+				
+				
+            }
+            for (var i = 0; i < walls.length; i++) {
+                if (player1.se_tocan(walls[i])) {
+				if (direction == 'right') {
+					player1.x -= speed; 
+				}
+				if (direction == 'left') {
+					player1.x += speed; 
+				}
+				
+				if (direction == 'down') {
+					player1.y -= speed; 
+				}
+				if (direction == 'up') {
+					player1.y += speed; 
+				}
+			}
+            }
+            
+        }
+
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 100);
+                };
+        }());
+
+        window.addEventListener('load',start)
+        
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
+</body>
+</html>
