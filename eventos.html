@@ -35,7 +35,7 @@
         var objetivo = new Image();
         var muros = new Image();
         var sonido = new Audio();
-        var segundos = 0;
+ 
         function Cuadro(x,y,w,h,c) {
             this.x = x;
             this.y = y;
@@ -68,21 +68,7 @@
             }
 
         }
-        
-        function contador(){
-            var n = 0;
-            
-            window.setInterval(function(){
-            
-            
-            n++;
-            if(n>segundos){
-                segundos=n;
-            }ddd
-            },1000);
-            
-            
-        }
+
         function start(){
              cv = document.getElementById('mycanvas');
              ctx = cv.getContext('2d');
@@ -95,10 +81,7 @@
              walls.push(new Cuadro(25,135,75,5,'black'));
              walls.push(new Cuadro(70,80,5,60,'black'));
              walls.push(new Cuadro(95,110,5,25,'black'));
-             walls.push(new Cuadro(75,80,50,5,'black'));
-            walls.push(new Cuadro(120,85,5,130,'black'));
-            walls.push(new Cuadro(150,80,5,100,'black'));
-
+            walls.push(new Cuadro(75,80,25,5,'black'));
              player1 = new Cuadro(superx,supery,10,18,'red')
              player2 = new Cuadro(950,930,10,10,'yellow')
 
@@ -122,7 +105,7 @@
             //ctx.fillRect(0, 0,1000,1000);
 
             ctx.fillStyle = "black";
-            ctx.fillText('TIEMPO: '+segundos,20,20);
+            ctx.fillText('SCORE: '+score,20,20);
             
             
 
@@ -143,11 +126,9 @@
                 ctx.fillStyle = "white";
                 ctx.fillText('P A U S E',500,500);
                 sonido.pause();
-                
             }else{
                 update();
                 sonido.pause();
-                contador();
                 sonido.volume=0.05
             }
             
@@ -215,7 +196,7 @@
             }
 
             
-            
+
             if (player1.se_tocan(player2)){
                 player2.x = getRandomInt(500);
 				player2.y = getRandomInt(500);
