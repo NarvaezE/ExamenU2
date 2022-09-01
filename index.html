@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laberinto Monkey</title>
+    <title>Laberinto Terraria</title>
     <style>
         canvas {
             
@@ -87,20 +87,30 @@
              cv = document.getElementById('mycanvas');
              ctx = cv.getContext('2d');
 
-             walls.push(new Cuadro(20,50,950,5,'black'));
-             walls.push(new Cuadro(20,950,950,5,'black'));
-             walls.push(new Cuadro(20,50,5,900,'black'));
-             walls.push(new Cuadro(970,50,5,900,'black'));
-             walls.push(new Cuadro(45,55,5,45,'black'));
-             walls.push(new Cuadro(25,135,75,5,'black'));
-             walls.push(new Cuadro(70,80,5,60,'black'));
-             walls.push(new Cuadro(95,110,5,25,'black'));
-             walls.push(new Cuadro(75,80,50,5,'black'));
-             walls.push(new Cuadro(120,85,5,130,'black'));
-             walls.push(new Cuadro(150,80,5,100,'black'));
+            walls.push(new Cuadro(20,50,950,5,'black'));
+            walls.push(new Cuadro(20,950,950,5,'black'));
+            walls.push(new Cuadro(20,50,5,900,'black'));
+            walls.push(new Cuadro(970,50,5,900,'black'));
+            walls.push(new Cuadro(45,55,5,60,'black'));
+            walls.push(new Cuadro(25,140,75,5,'black'));
+            walls.push(new Cuadro(70,80,5,60,'black'));
+            walls.push(new Cuadro(95,110,5,35,'black'));
+            walls.push(new Cuadro(75,80,50,5,'black'));
+            walls.push(new Cuadro(120,85,5,130,'black'));
+            walls.push(new Cuadro(145,80,5,135,'black'));
+            walls.push(new Cuadro(145,80,25,5,'black'));
+            walls.push(new Cuadro(190,55,5,90,'black'));
+            walls.push(new Cuadro(165,140,30,5,'black'));
+            walls.push(new Cuadro(165,110,5,35,'black'));
+            walls.push(new Cuadro(145,170,70,5,'black'));
+            walls.push(new Cuadro(195,110,75,5,'black'));
+            walls.push(new Cuadro(215,80,75,5,'black'));
+            walls.push(new Cuadro(290,80,5,60,'black'));
+            walls.push(new Cuadro(215,140,80,5,'black'));
+            walls.push(new Cuadro(145,200,70,5,'black'));
 
-             player1 = new Cuadro(superx,supery,10,18,'red')
-             player2 = new Cuadro(950,930,10,10,'yellow')
+            player1 = new Cuadro(superx,supery,10,18,'red');
+            player2 = new Cuadro(950,930,10,10,'yellow');
 
             sonido.src ='overworld-day.mp3';
 
@@ -108,7 +118,7 @@
             objetivo.src = 'espada.png';
             fondo.src = 'fondo.png';
 
-             paint();
+            paint();
         }
 
 
@@ -146,9 +156,9 @@
                 
             }else{
                 update();
-                sonido.pause();
+                sonido.play();
                 contador();
-                sonido.volume=0.05
+                sonido.volume=0.0;
             }
             
             
@@ -185,7 +195,7 @@
 
         function update() {
             if (direction=='right'){
-                player1.x+=2;
+                player1.x+=1;
                 // if(player1.x >1000) {
                     
                 // player1.x = 1000;
@@ -193,7 +203,7 @@
             }
             
             if (direction=='down'){
-                player1.y+=2;
+                player1.y+=1;
                 // if(player1.y >1000) {
                     
                 // player1.y = 1000;
@@ -201,14 +211,14 @@
             }
 
             if (direction=='left'){
-                player1.x-=2;
+                player1.x-=1;
                 // if(player1.x <0) {
                 //     player1.x = 0;
                 // }
             }
 
             if (direction=='up'){
-                player1.y-=2;
+                player1.y-=1;
                 // if(player1.y <0) {
                 //     player1.y = 1;
                 // }
