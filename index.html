@@ -14,7 +14,7 @@
 </head>
 <body> 
     
-    <canvas id="mycanvas" width="1000" height="1000" >
+    <canvas id="mycanvas" width="800" height="890" >
         Tu navegador no soporta canvas
     </canvas>
     <script type="text/javascript">
@@ -29,6 +29,7 @@
         var score =0;
         var speed =4;
         var pause =false;
+        var gana = false;
         var walls = [4];
         var fondo = new Image();
         var personaje = new Image();
@@ -36,6 +37,7 @@
         var muros = new Image();
         var sonido = new Audio();
         var segundos = 0;
+        var meta = new Audio();
         function Cuadro(x,y,w,h,c) {
             this.x = x;
             this.y = y;
@@ -240,16 +242,40 @@
             walls.push(new Cuadro(215,580,45,5,'black'));
             walls.push(new Cuadro(180,580,45,5,'black'));
             walls.push(new Cuadro(215,550,80,5,'black'));
-            walls.push(new Cuadro(215,550,80,5,'black'));
+            walls.push(new Cuadro(215,510,5,40,'black'));
+            walls.push(new Cuadro(50,440,190,5,'black'));
+            walls.push(new Cuadro(235,440,5,70,'black'));
+            walls.push(new Cuadro(215,510,25,5,'black'));
+            walls.push(new Cuadro(110,475,5,35,'black'));
+            walls.push(new Cuadro(110,475,105,5,'black'));
+            walls.push(new Cuadro(70,400,120,5,'black'));
+            walls.push(new Cuadro(70,365,5,35,'black'));
+            walls.push(new Cuadro(145,290,5,70,'black'));
+            walls.push(new Cuadro(145,360,25,5,'black'));
+            walls.push(new Cuadro(165,280,5,80,'black'));
+            walls.push(new Cuadro(120,290,5,75,'black'));
+            walls.push(new Cuadro(100,360,25,5,'black'));
+            walls.push(new Cuadro(100,320,5,40,'black'));
+            walls.push(new Cuadro(45,320,5,85,'black'));
+            walls.push(new Cuadro(45,440,5,290,'black'));
+            walls.push(new Cuadro(45,725,35,5,'black'));
+            walls.push(new Cuadro(75,550,5,175,'black'));
+            walls.push(new Cuadro(75,475,5,40,'black'));
+            walls.push(new Cuadro(75,510,35,5,'black'));
+            walls.push(new Cuadro(110,630,5,35,'black'));
+            walls.push(new Cuadro(315,585,5,35,'black'));
+            walls.push(new Cuadro(285,585,35,5,'black'));
+            walls.push(new Cuadro(240,620,25,5,'black'));
 
             player1 = new Cuadro(superx,supery,10,18,'red');
             player2 = new Cuadro(560,780,40,40,'yellow');
 
             sonido.src ='overworld-day.mp3';
-
+            meta.src = 'magic-mirror-sound.mp3'
             personaje.src = 'guide.png';
             objetivo.src = 'pylon.gif';
             fondo.src = 'fondo.png';
+            
 
             paint();
         }
@@ -285,15 +311,24 @@
                 ctx.fillRect(0,0,1000,1000);
 
                 ctx.fillStyle = "white";
-                ctx.fillText('P A U S E',500,500);
+                ctx.fillText('P A U S E',500,500,800);
                 sonido.pause();
                 
+                
+            }
+            else if(gana){
+                sonido.pause();
+			 	meta.play();
+                meta.volume = 0.1
+                ctx.fillStyle = "white";
+                ctx.fillRect(0,0,1000,1000)
             }else{
                 update();
                 sonido.play();
                 contador();
                 sonido.volume=0.1;
             }
+            
             
             
         }   
@@ -361,11 +396,7 @@
             
             
             if (player1.se_tocan(player2)){
-                player2.x = getRandomInt(500);
-				player2.y = getRandomInt(500);
-				score += 10;
-				
-				
+                gana = true;
             }
             for (var i = 0; i < walls.length; i++) {
                 if (player1.se_tocan(walls[i])) {
