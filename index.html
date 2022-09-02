@@ -73,12 +73,10 @@
             var n = 0;
             
             window.setInterval(function(){
-            
-            
-            n++;
-            if(n>segundos){
-                segundos=n;
-            }ddd
+                n++;
+                if(n>segundos){
+                    segundos=n;
+                }
             },1000);
             
             
@@ -88,8 +86,7 @@
              ctx = cv.getContext('2d');
 
             walls.push(new Cuadro(20,50,580,5,'black'));
-            walls.push(new Cuadro(20,950,580,5,'black'));
-            walls.push(new Cuadro(20,50,5,900,'black'));
+            walls.push(new Cuadro(20,50,5,710,'black'));
             walls.push(new Cuadro(45,55,5,60,'black'));
             walls.push(new Cuadro(25,140,75,5,'black'));
             walls.push(new Cuadro(70,80,5,60,'black'));
@@ -119,7 +116,7 @@
             walls.push(new Cuadro(520,50,5,65,'black'));
             walls.push(new Cuadro(555,80,5,210,'black'));
             walls.push(new Cuadro(480,110,5,180,'black'));
-            walls.push(new Cuadro(595,50,5,900,'black'));
+            walls.push(new Cuadro(595,50,5,710,'black'));
             walls.push(new Cuadro(520,150,35,5,'black'));
             walls.push(new Cuadro(520,220,35,5,'black'));
             walls.push(new Cuadro(485,255,35,5,'black'));
@@ -127,8 +124,123 @@
             walls.push(new Cuadro(520,290,40,5,'black'));
             walls.push(new Cuadro(520,290,5,70,'black'));
             walls.push(new Cuadro(560,325,35,5,'black'));
-            walls.push(new Cuadro(150,325,35,5,'black'));
-            
+            walls.push(new Cuadro(125,240,70,5,'black'));
+            walls.push(new Cuadro(165,205,5,35,'black'));
+            walls.push(new Cuadro(20,180,50,5,'black'));
+            walls.push(new Cuadro(50,215,50,5,'black'));
+            walls.push(new Cuadro(100,175,5,120,'black'));
+            walls.push(new Cuadro(100,290,25,5,'black'));
+            walls.push(new Cuadro(70,220,5,145,'black'));
+            walls.push(new Cuadro(45,320,30,5,'black'));
+            walls.push(new Cuadro(20,290,30,5,'black'));
+            walls.push(new Cuadro(50,245,5,50,'black'));
+            walls.push(new Cuadro(255,140,5,35,'black'));
+            walls.push(new Cuadro(255,175,35,5,'black'));
+            walls.push(new Cuadro(285,175,5,30,'black'));
+            walls.push(new Cuadro(285,200,35,5,'black'));
+            walls.push(new Cuadro(320,175,5,30,'black'));
+            walls.push(new Cuadro(355,175,35,5,'black'));
+            walls.push(new Cuadro(420,175,30,5,'black'));
+            walls.push(new Cuadro(450,140,5,40,'black'));
+            walls.push(new Cuadro(415,175,5,30,'black'));
+            walls.push(new Cuadro(350,175,5,85,'black'));
+            walls.push(new Cuadro(350,205,70,5,'black'));
+            walls.push(new Cuadro(350,205,70,5,'black'));
+            walls.push(new Cuadro(190,245,5,155,'black'));
+            walls.push(new Cuadro(320,255,30,5,'black'));
+            walls.push(new Cuadro(320,260,5,105,'black'));
+            walls.push(new Cuadro(215,170,5,190,'black'));
+            walls.push(new Cuadro(215,215,35,5,'black'));
+            walls.push(new Cuadro(250,215,5,45,'black'));
+            walls.push(new Cuadro(250,255,35,5,'black'));
+            walls.push(new Cuadro(250,290,70,5,'black'));
+            walls.push(new Cuadro(250,290,5,35,'black'));
+            walls.push(new Cuadro(215,320,35,5,'black'));
+            walls.push(new Cuadro(145,240,5,55,'black'));
+            walls.push(new Cuadro(145,240,5,55,'black'));
+            walls.push(new Cuadro(385,205,5,90,'black'));
+            walls.push(new Cuadro(450,285,35,5,'black'));
+            walls.push(new Cuadro(420,250,35,5,'black'));
+            walls.push(new Cuadro(450,205,5,45,'black'));
+            walls.push(new Cuadro(415,250,5,75,'black'));
+            walls.push(new Cuadro(450,290,5,70,'black'));
+            //walls.push(new Cuadro(325,325,95,5,'black'));
+            walls.push(new Cuadro(360,325,60,5,'black'));
+            walls.push(new Cuadro(360,290,5,175,'black'));
+            walls.push(new Cuadro(360,360,95,5,'black'));
+            walls.push(new Cuadro(490,325,35,5,'black'));
+            walls.push(new Cuadro(490,360,70,5,'black'));
+            walls.push(new Cuadro(560,360,5,35,'black'));
+            walls.push(new Cuadro(490,360,5,230,'black'));//pared larga
+            walls.push(new Cuadro(525,405,5,35,'black'));
+            walls.push(new Cuadro(525,440,35,5,'black'));
+            walls.push(new Cuadro(560,440,5,70,'black'));
+            walls.push(new Cuadro(525,510,75,5,'black'));
+            walls.push(new Cuadro(490,475,35,5,'black'));
+            walls.push(new Cuadro(490,545,75,5,'black'));
+            walls.push(new Cuadro(560,550,5,35,'black'));
+            walls.push(new Cuadro(450,585,40,5,'black'));
+            walls.push(new Cuadro(525,585,5,140,'black'));
+            walls.push(new Cuadro(415,550,5,70,'black'));
+            walls.push(new Cuadro(415,620,150,5,'black'));
+            walls.push(new Cuadro(415,550,40,5,'black'));
+            walls.push(new Cuadro(450,510,5,40,'black'));
+            walls.push(new Cuadro(560,655,5,70,'black'));
+            walls.push(new Cuadro(560,655,35,5,'black'));
+            walls.push(new Cuadro(20,760,550,5,'black'));
+            walls.push(new Cuadro(490,625,5,70,'black'));
+            walls.push(new Cuadro(415,720,110,5,'black'));
+            walls.push(new Cuadro(415,655,5,70,'black'));
+            walls.push(new Cuadro(380,655,70,5,'black'));
+            walls.push(new Cuadro(450,690,40,5,'black'));
+            walls.push(new Cuadro(355,585,60,5,'black'));
+            walls.push(new Cuadro(415,475,75,5,'black'));
+            walls.push(new Cuadro(415,440,5,75,'black'));
+            walls.push(new Cuadro(320,510,95,5,'black'));
+            walls.push(new Cuadro(320,365,5,100,'black'));
+            walls.push(new Cuadro(355,515,5,35,'black'));
+            walls.push(new Cuadro(355,590,5,105,'black'));
+            walls.push(new Cuadro(355,590,5,105,'black'));
+            walls.push(new Cuadro(355,620,25,5,'black'));
+            walls.push(new Cuadro(355,690,25,5,'black'));
+            walls.push(new Cuadro(375,690,5,70,'black'));
+            walls.push(new Cuadro(320,655,35,5,'black'));
+            walls.push(new Cuadro(285,620,35,5,'black'));
+            walls.push(new Cuadro(285,550,75,5,'black'));
+            walls.push(new Cuadro(215,690,70,5,'black'));
+            walls.push(new Cuadro(285,620,5,105,'black'));
+            walls.push(new Cuadro(285,725,70,5,'black'));
+            walls.push(new Cuadro(320,690,5,35,'black'));
+            walls.push(new Cuadro(250,725,5,35,'black'));
+            walls.push(new Cuadro(215,580,5,140,'black'));
+            walls.push(new Cuadro(250,655,35,5,'black'));
+            walls.push(new Cuadro(215,580,5,140,'black'));
+            //walls.push(new Cuadro(180,620,35,5,'black'));
+            //walls.push(new Cuadro(145,655,70,5,'black'));
+            walls.push(new Cuadro(180,655,5,70,'black'));
+            walls.push(new Cuadro(110,655,5,70,'black'));
+            walls.push(new Cuadro(145,580,5,110,'black'));
+            walls.push(new Cuadro(110,725,75,5,'black'));
+            walls.push(new Cuadro(145,655,35,5,'black'));
+            walls.push(new Cuadro(180,620,35,5,'black'));
+            walls.push(new Cuadro(110,580,70,5,'black'));
+            walls.push(new Cuadro(180,510,5,75,'black'));
+            walls.push(new Cuadro(110,510,70,5,'black'));
+            walls.push(new Cuadro(75,545,70,5,'black'));
+            walls.push(new Cuadro(190,400,65,5,'black'));
+            walls.push(new Cuadro(255,355,5,50,'black'));
+            walls.push(new Cuadro(285,320,5,70,'black'));
+            walls.push(new Cuadro(255,355,35,5,'black'));
+            walls.push(new Cuadro(320,465,5,45,'black'));
+            walls.push(new Cuadro(360,400,100,5,'black'));
+            walls.push(new Cuadro(360,465,30,5,'black'));
+            walls.push(new Cuadro(460,400,5,35,'black'));
+            walls.push(new Cuadro(285,390,5,125,'black'));
+            walls.push(new Cuadro(260,440,5,185,'black'));
+            walls.push(new Cuadro(215,580,45,5,'black'));
+            walls.push(new Cuadro(180,580,45,5,'black'));
+            walls.push(new Cuadro(215,550,80,5,'black'));
+            walls.push(new Cuadro(215,550,80,5,'black'));
 
             player1 = new Cuadro(superx,supery,10,18,'red');
             player2 = new Cuadro(950,930,10,10,'yellow');
