@@ -37,6 +37,8 @@
         var muros = new Image();
         var sonido = new Audio();
         var segundos = 0;
+        var win = new Image();
+        var reinicio = false;
         var meta = new Audio();
         function Cuadro(x,y,w,h,c) {
             this.x = x;
@@ -270,6 +272,7 @@
             player1 = new Cuadro(superx,supery,10,18,'red');
             player2 = new Cuadro(560,780,40,40,'yellow');
 
+            win.src='win.jpg';
             sonido.src ='overworld-day.mp3';
             meta.src = 'magic-mirror-sound.mp3'
             personaje.src = 'guide.png';
@@ -287,12 +290,16 @@
 
             window.requestAnimationFrame(paint);
             //ctx.fillStyle = "forestgreen";
-            ctx.drawImage(fondo, 0, 0,1000,1000)
+            reinicio=false;
+            ctx.drawImage(fondo, 0, 0,800,890)
             //ctx.fillRect(0, 0,1000,1000);
             ctx.fillStyle = "forestgreen";
-            ctx.fillRect(650,10,150,70);
+            ctx.fillRect(620,10,150,100);
             ctx.fillStyle = "white";
-            ctx.fillText('TIEMPO: '+segundos,700,50);
+            ctx.font = '20px Andy'
+            ctx.fillText('TIEMPO: ',630,50);
+            
+            ctx.fillText(segundos+' SEGUNDOS',630,90);
             
             
 
@@ -308,20 +315,25 @@
             if(pause){
                 
                 ctx.fillStyle = "black";
-                ctx.fillRect(0,0,1000,1000);
-
+                ctx.fillRect(0,0,800,890);
+                ctx.font = '50px Andy'
                 ctx.fillStyle = "white";
-                ctx.fillText('P A U S E',500,500,800);
+                ctx.fillText('P A U S E',280,470);
                 sonido.pause();
                 
                 
             }
-            else if(gana){
+            else if(gana ){
                 sonido.pause();
 			 	meta.play();
                 meta.volume = 0.1
-                ctx.fillStyle = "white";
-                ctx.fillRect(0,0,1000,1000)
+                ctx.drawImage(win, 0, 0,800,890)
+                ctx.fillStyle = ('rgba(189, 195, 199,0.7)')
+                ctx.fillRect(250,250,400,445);
+                ctx.font = '50px Andy';
+                ctx.fillStyle = 'black';
+                ctx.fillText("G A N A S T E",280,470);
+                
             }else{
                 update();
                 sonido.play();
@@ -359,6 +371,10 @@
                 
                 pause=(pause)?false:true;
             } 
+            // if(e.keyCode == 81 ){
+                
+            //     reinicio=true;
+            // } 
             
         });
 
@@ -401,22 +417,27 @@
             for (var i = 0; i < walls.length; i++) {
                 if (player1.se_tocan(walls[i])) {
 				if (direction == 'right') {
-					player1.x -= speed; 
+					player1.x -= 5; 
 				}
 				if (direction == 'left') {
-					player1.x += speed; 
+					player1.x += 5; 
 				}
 				
 				if (direction == 'down') {
-					player1.y -= speed; 
+					player1.y -= 5; 
 				}
 				if (direction == 'up') {
-					player1.y += speed; 
+					player1.y += 5; 
 				}
 			}
             }
             
         }
+        
+        
+        window.addEventListener("keydown", function (event) {console.log(event)
+           
+        },false);
 
         window.requestAnimationFrame = (function () {
             return window.requestAnimationFrame ||
